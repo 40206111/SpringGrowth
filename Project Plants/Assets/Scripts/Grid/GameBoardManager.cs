@@ -11,6 +11,7 @@ public class GameBoardManager : MonoBehaviour
 
     [HideInInspector]
     public GameBoard Board;
+    readonly int RandomPadding = 10;
 
     private void Awake()
     {
@@ -25,8 +26,6 @@ public class GameBoardManager : MonoBehaviour
 
     IEnumerator<YieldInstruction> CoGenerateGameBoard(uint gridWidth, uint gridHeight)
     {
-        Random.InitState((int)Time.time);
-
         if (Board != null)
         {
             Board.Destroy();
@@ -41,17 +40,54 @@ public class GameBoardManager : MonoBehaviour
         int negWidth = gridWidth % 2 == 1 ? -(halfWidth + 1) : -halfWidth;
         int negHeight = gridHeight % 2 == 1 ? -(halfheight + 1) : -halfheight;
 
-        int counter = 0;
-
-        for (int x = negWidth; x < halfWidth; x++)
+        for (int y = negHeight; y < halfheight; y++)
         {
-            for (int y = negHeight; y < halfheight; y++)
+            for (int x = negWidth; x < halfWidth; x++)
             {
-                int landType = Random.Range(1, (int)(Tile.eLandType.TotalTypes));
+                Vector2Int coords = new Vector2Int(x, y);
 
-                TheTileMap.SetTile(new Vector3Int(x, y, 0), TileSprites.TileAesthetic[landType]);
+                Tile left = Board.GetTileInDir(coords, GameBoard.eDir.Left);
+                Tile downLeft = Board.GetTileInDir(coords, GameBoard.eDir.DownLeft);
+                Tile down = Board.GetTileInDir(coords, GameBoard.eDir.Down);
 
-                counter++;
+                List<Tile.eLandType> randomList = new List<Tile.eLandType>();
+                if (left != null)
+                {
+                    for (int i = 0; i < RandomPadding; ++i)
+                    {
+                        randomList.Add(left.LandType);
+                    }
+                }
+                if (downLeft != null)
+                {
+                    for (int i = 0; i < RandomPadding; ++i)
+                    {
+                        randomList.Add(downLeft.LandType);
+                    }
+                }
+                if (down != null)
+                {
+                    for (int i = 0; i < RandomPadding; ++i)
+                    {
+                        randomList.Add(down.LandType);
+                    }
+                }
+
+                //if (randomList.Count == 0)
+                {
+                    for (int i = 1; i < (int)Tile.eLandType.TotalTypes; i++)
+                    {
+                        randomList.Add((Tile.eLandType)i);
+                    }
+                }
+
+
+                int index = Random.Range(0, randomList.Count);
+                Tile.eLandType landType = randomList[index];
+
+                TheTileMap.SetTile(new Vector3Int(x, y, 0), TileSprites.TileAesthetic[(int)landType]);
+                Tile newTile = new Tile(landType);
+                Board.AddTile(newTile);
             }
             yield return null;
         }

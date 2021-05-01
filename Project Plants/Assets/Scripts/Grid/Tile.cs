@@ -14,6 +14,12 @@ public class Tile
     }
 
     public bool IsActive = false;
-    eLandType LandType = eLandType.None;
+    public eLandType LandType { get; private set; }
+
+    public Tile(eLandType type)
+    {
+        LandType = type;
+        IsActive = true;
+    }
     
 }
