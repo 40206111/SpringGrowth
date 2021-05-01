@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 213816056}
   - component: {fileID: 213816055}
   - component: {fileID: 213816054}
+  - component: {fileID: 213816057}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -206,6 +207,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &213816057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213816053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f43dbed89943e42a916ac13f64e665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragSpeed: -0.1
 --- !u!1 &1095076006
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +279,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TheTileMap: {fileID: 1467928901}
   TileSprites: {fileID: 11400000, guid: 1b82f321ec8c6814398addd851c79137, type: 2}
+  LawnDefaults: {fileID: 11400000, guid: f01061d957955db478e4f9fc1ac905d3, type: 2}
+  FarmDefaults: {fileID: 11400000, guid: 10b04086e12f33a46abf972329405553, type: 2}
+  PavingDefaults: {fileID: 11400000, guid: 6a33cd0f92373d140b0a79734dcbcf16, type: 2}
 --- !u!1 &1467928898
 GameObject:
   m_ObjectHideFlags: 0

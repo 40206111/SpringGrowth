@@ -4,10 +4,28 @@ using UnityEngine.Tilemaps;
 
 public class GameBoardManager : MonoBehaviour
 {
+    static GameBoardManager Instance;
+    public static GameBoardManager GetInstance
+    {
+        get
+        {
+            return Instance;
+        }
+        private set { }
+    }
+
     [SerializeField]
     Tilemap TheTileMap;
     [SerializeField]
     SOTileSprites TileSprites;
+
+    
+    [SerializeField]
+    public SOTileDefaults LawnDefaults;
+    [SerializeField]
+    public SOTileDefaults FarmDefaults;
+    [SerializeField]
+    public SOTileDefaults PavingDefaults;
 
     [HideInInspector]
     public GameBoard Board;
@@ -15,6 +33,7 @@ public class GameBoardManager : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         GenerateGameBoard(22, 10);
     }
 

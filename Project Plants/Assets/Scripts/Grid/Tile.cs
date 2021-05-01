@@ -16,10 +16,35 @@ public class Tile
     public bool IsActive = false;
     public eLandType LandType { get; private set; }
 
+    public int DefaultMoisture;
+    public int DefaultNutrients;
+    public int DefaultSun;
+
+    public int CurrentMoisture;
+    public int CurrentNutrients;
+    public int CurrentSun;
+
     public Tile(eLandType type)
     {
         LandType = type;
         IsActive = true;
+        SetTileDetails();
+    }
+
+    void SetTileDetails()
+    {
+        switch (LandType)
+        {
+            case eLandType.Lawn:
+                GameBoardManager.GetInstance.LawnDefaults.CalculateValues(out DefaultMoisture, out DefaultNutrients, out DefaultSun);
+                break;
+            case eLandType.Farm:
+                GameBoardManager.GetInstance.FarmDefaults.CalculateValues(out DefaultMoisture, out DefaultNutrients, out DefaultSun);
+                break;
+            case eLandType.Paving:
+                GameBoardManager.GetInstance.PavingDefaults.CalculateValues(out DefaultMoisture, out DefaultNutrients, out DefaultSun);
+                break;
+        }
     }
     
 }
