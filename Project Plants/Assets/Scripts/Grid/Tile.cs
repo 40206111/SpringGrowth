@@ -45,6 +45,10 @@ public class Tile
                 GameBoardManager.GetInstance.PavingDefaults.CalculateValues(out DefaultMoisture, out DefaultNutrients, out DefaultSun);
                 break;
         }
+
+        CurrentMoisture = DefaultMoisture;
+        CurrentNutrients = DefaultNutrients;
+        CurrentSun = DefaultSun;
     }
     
 }

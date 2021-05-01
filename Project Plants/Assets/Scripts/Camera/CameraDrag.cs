@@ -17,5 +17,10 @@ public class CameraDrag : MonoBehaviour
             pos.y -= Input.GetAxis("Mouse Y") * speed * Time.deltaTime;
             transform.position = pos;
         }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            transform.position = Camera.main.transform.position;
+        }
     }
 }

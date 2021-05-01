@@ -34,7 +34,7 @@ public class GameBoardManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        GenerateGameBoard(22, 10);
+        GenerateGameBoard(50, 50);
     }
 
     void GenerateGameBoard(uint gridWidth, uint gridHeight)
