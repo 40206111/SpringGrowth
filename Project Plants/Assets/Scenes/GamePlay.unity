@@ -581,6 +581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Selector: {fileID: 945698637}
+  UpgradeOpen: 0
   GameStage: 0
 --- !u!1 &1467928898
 GameObject:
@@ -739,6 +740,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3576057252169805361, guid: 317d0011bacff5648a27c77bc7804083, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576057252169805361, guid: 317d0011bacff5648a27c77bc7804083, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -386102733
+      objectReference: {fileID: 0}
     - target: {fileID: 3576057252169805363, guid: 317d0011bacff5648a27c77bc7804083, type: 3}
       propertyPath: m_Name
       value: SelectionRing
@@ -843,7 +852,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1959385858}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.5, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
