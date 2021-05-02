@@ -7,6 +7,8 @@ public class CameraDrag : MonoBehaviour
     [SerializeField]
     float speed;
 
+    [SerializeField]
+    float AndroidSpeed;
 
     void Update()
     {
@@ -15,12 +17,12 @@ public class CameraDrag : MonoBehaviour
             return;
         }
 
-#if UNITY_ANDROID && !UNITYEDITOR
+#if UNITY_ANDROID && !UNITY_EDITOR
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
             Vector3 pos = transform.position;
-            pos.x -=  Input.GetTouch(0).deltaPosition.x * speed * Time.deltaTime;
-            pos.y -=  Input.GetTouch(0).deltaPosition.y * speed * Time.deltaTime;
+            pos.x -=  Input.GetTouch(0).deltaPosition.x * AndroidSpeed * Time.deltaTime;
+            pos.y -=  Input.GetTouch(0).deltaPosition.y * AndroidSpeed * Time.deltaTime;
             transform.position = pos;
         }
 
@@ -39,7 +41,9 @@ public class CameraDrag : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            transform.position = Camera.main.transform.position;
+            Vector3 pos = Camera.main.transform.position;
+            pos.z = 0;
+            transform.position = pos;
         }
 #endif
     }

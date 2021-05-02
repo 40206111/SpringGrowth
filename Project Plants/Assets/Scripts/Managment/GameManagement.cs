@@ -35,9 +35,23 @@ public class GameManagement : MonoBehaviour
     {
 #if UNITY_ANDROID && !UNITY_EDITOR
         if (Input.GetMouseButtonUp(0) && SelectorInfo.Plantable)
+        {
+            for(touch in Input.touches) 
+            {
+                if (touch.tapCount == 2) 
+                {
+                    if (Player.GetPlayer.Seeds > 0)
+                    {
+                        Player.GetPlayer.Seeds--;
+                        GameObject weed = PoolManager.GetInstance.GetWeed();
+                        weed.SetActive(true);
+                        weed.transform.position = Selector.position;
+                    }
+                }    
+            }
+        }
 #else
         if (Input.GetMouseButtonDown(1) && SelectorInfo.Plantable)
-#endif
         {
             if (Player.GetPlayer.Seeds > 0)
             {
@@ -47,6 +61,7 @@ public class GameManagement : MonoBehaviour
                 weed.transform.position = Selector.position;
             }
         }
+#endif
     }
 
     public enum eStage
