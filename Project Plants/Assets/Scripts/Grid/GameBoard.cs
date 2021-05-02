@@ -19,8 +19,11 @@ public class GameBoard
     public uint GridHeight { get; private set; }
     public uint GridWidth { get; private set; }
 
-    int NegHalfHeight => GridHeight % 2 == 1 ? (int)-((GridHeight / 2) + 1) : (int)-(GridHeight / 2); 
-    int NegHalfWidth => GridWidth % 2 == 1 ? (int)-((GridWidth / 2) + 1) : (int)-(GridWidth / 2); 
+    int NegHalfHeight => GridHeight % 2 == 1 ? (int)-((GridHeight / 2) + 1) : (int)-(GridHeight / 2);
+    int NegHalfWidth => GridWidth % 2 == 1 ? (int)-((GridWidth / 2) + 1) : (int)-(GridWidth / 2);
+
+    public Vector2Int MinCorner = new Vector2Int(int.MaxValue, int.MaxValue);
+    public Vector2Int MaxCorner = new Vector2Int(int.MinValue, int.MinValue);
 
     List<Tile> Tiles;
 
@@ -34,6 +37,27 @@ public class GameBoard
     public void AddTile(Tile tile)
     {
         Tiles.Add(tile);
+        UpdateMinMax(GetCoordsFromIndex(Tiles.Count - 1));
+    }
+
+    private void UpdateMinMax(Vector2Int newPos)
+    {
+        if(newPos.x < MinCorner.x)
+        {
+            MinCorner.x = newPos.x;
+        }
+        if(newPos.y < MinCorner.y)
+        {
+            MinCorner.y = newPos.y;
+        }
+        if(newPos.x > MaxCorner.x)
+        {
+            MaxCorner.x = newPos.x;
+        }
+        if(newPos.y > MaxCorner.y)
+        {
+            MaxCorner.y = newPos.y;
+        }
     }
 
     public Tile GetTile(int index)

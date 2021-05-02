@@ -25,15 +25,13 @@ public class TileIcons : MonoBehaviour
         SunText = Sun.GetComponentInChildren<TMP_Text>();
     }
 
-    void Update()
+    void Start()
     {
-        Vector3 pos = transform.position;
+        Vector3 pos = transform.position + new Vector3(0.5f, 0.5f, 0.0f);
         pos.x = Mathf.FloorToInt(pos.x);
         pos.y = Mathf.FloorToInt(pos.y);
 
         Vector2Int coords = new Vector2Int((int)pos.x, (int)pos.y);
-
-        transform.position = pos;
 
         Tile tile = GameBoardManager.GetInstance.Board.GetTile(coords);
         if (tile == null)

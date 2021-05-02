@@ -30,9 +30,11 @@ public class GameBoardManager : MonoBehaviour
     [HideInInspector]
     public GameBoard Board;
     readonly int RandomPadding = 10;
+    public bool BoardFullyLoaded { get; private set; }
 
     private void Awake()
     {
+        BoardFullyLoaded = false;
         Instance = this;
         GenerateGameBoard(50, 50);
     }
@@ -46,6 +48,7 @@ public class GameBoardManager : MonoBehaviour
 
     IEnumerator<YieldInstruction> CoGenerateGameBoard(uint gridWidth, uint gridHeight)
     {
+        BoardFullyLoaded = false;
         if (Board != null)
         {
             Board.Destroy();
@@ -112,6 +115,7 @@ public class GameBoardManager : MonoBehaviour
             }
             yield return null;
         }
+        BoardFullyLoaded = true;
     }
 
 }
