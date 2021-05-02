@@ -9,10 +9,6 @@ public class PoolManager : MonoBehaviour
     public static PoolManager GetInstance {
         get
         {
-            if (Instance == null)
-            {
-                Instance = new PoolManager();
-            }
             return Instance;
         }
         private set { }
@@ -28,7 +24,12 @@ public class PoolManager : MonoBehaviour
     //Parents
     GameObject WeedParent;
 
-    public void CreateGameBoardPools(int gridWidth, int gridHeight)
+    public void Awake()
+    {
+        Instance = this;
+    }
+
+    public void CreateGameBoardPools(uint gridWidth, uint gridHeight)
     {
         if (Weeds == null)
         {
@@ -44,7 +45,20 @@ public class PoolManager : MonoBehaviour
         {
             Weeds.Add(Instantiate(WeedPrefab, WeedParent.transform));
             Weeds[Weeds.Count - 1].name = $"Weed_{i}";
+            Weeds[Weeds.Count - 1].SetActive(false);
         }
     }
 
+    public GameObject GetWeed()
+    {
+        foreach (GameObject w in Weeds)
+        {
+            if (!w.activeSelf)
+            {
+                return w;
+            }
+        }
+
+        return null;
+    }
 }
