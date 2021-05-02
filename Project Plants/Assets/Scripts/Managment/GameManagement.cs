@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManagement : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class GameManagement : MonoBehaviour
     public void Awake()
     {
         Instance = this;
+        SceneManager.LoadSceneAsync("UI", LoadSceneMode.Additive);
     }
 
     private void Update()

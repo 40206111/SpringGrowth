@@ -26,7 +26,7 @@ public class Player
 
     public eUpgrades Upgrades = eUpgrades.None;
 
-    public int Seeds = 1;
+    public int Seeds = 0;
     public int NeededWater = 30;
     public int NeededNutrients = 30;
     public int NeededSun = 30;
