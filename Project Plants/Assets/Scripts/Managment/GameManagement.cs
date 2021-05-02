@@ -8,6 +8,8 @@ public class GameManagement : MonoBehaviour
     [SerializeField]
     Transform Selector;
 
+    FollowMouseSnapGrid SelectorInfo;
+
     //Manager
     static GameManagement Instance;
     public static GameManagement GetInstance
@@ -23,11 +25,12 @@ public class GameManagement : MonoBehaviour
     {
         Instance = this;
         SceneManager.LoadSceneAsync("UI", LoadSceneMode.Additive);
+        SelectorInfo = Selector.GetComponent<FollowMouseSnapGrid>();
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && SelectorInfo.Plantable)
         {
             if (Player.GetPlayer.Seeds > 0)
             {

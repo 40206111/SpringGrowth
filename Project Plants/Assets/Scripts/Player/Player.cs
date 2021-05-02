@@ -26,16 +26,19 @@ public class Player
 
     public eUpgrades Upgrades = eUpgrades.None;
 
-    public int Seeds = 0;
-    public int NeededWater = 30;
-    public int NeededNutrients = 30;
-    public int NeededSun = 30;
+    public int Seeds = 1;
+    public int NeededWater = 10;
+    public int NeededNutrients = 10;
+    public int NeededSun = 10;
     public float SeedingTime = 5;
     public int Money = 0;
     public int MoneyPerSec = 1;
     public float FloweringTime = 5;
     public float TimePlanted = 5;
     public float SeedLife = 10;
+    public float WaterPercent = 0.5f;
+    public float NutrientsPercent = 0.2f;
+    public float SunPercent = 0.6f;
 
     public void Init(int neededWater, int neededNutrients, int neededSun, int seedingTime)
     {
