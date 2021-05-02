@@ -33,7 +33,11 @@ public class GameManagement : MonoBehaviour
 
     private void Update()
     {
+#if UNITY_ANDROID && !UNITY_EDITOR
+        if (Input.GetMouseButtonUp(0) && SelectorInfo.Plantable)
+#else
         if (Input.GetMouseButtonDown(1) && SelectorInfo.Plantable)
+#endif
         {
             if (Player.GetPlayer.Seeds > 0)
             {

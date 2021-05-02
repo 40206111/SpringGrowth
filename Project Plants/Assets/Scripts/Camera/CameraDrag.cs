@@ -14,6 +14,21 @@ public class CameraDrag : MonoBehaviour
         {
             return;
         }
+
+#if UNITY_ANDROID && !UNITYEDITOR
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+        {
+            Vector3 pos = transform.position;
+            pos.x -=  Input.GetTouch(0).deltaPosition.x * speed * Time.deltaTime;
+            pos.y -=  Input.GetTouch(0).deltaPosition.y * speed * Time.deltaTime;
+            transform.position = pos;
+        }
+
+        if (Input.touchCount <= 0)
+        {
+            transform.position = Camera.main.transform.position;
+        }
+#else
         if (Input.GetMouseButton(0))
         {
             Vector3 pos = transform.position;
@@ -26,5 +41,6 @@ public class CameraDrag : MonoBehaviour
         {
             transform.position = Camera.main.transform.position;
         }
+#endif
     }
 }

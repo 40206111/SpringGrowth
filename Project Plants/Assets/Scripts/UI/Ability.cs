@@ -59,6 +59,7 @@ public class Ability : MonoBehaviour
             return;
         }
 
+        Bought = true;
         Player.GetPlayer.Money -= AbilityCost;
         Player.GetPlayer.SeedLife += Change;
     }
@@ -70,6 +71,7 @@ public class Ability : MonoBehaviour
             return;
         }
 
+        Bought = true;
         Player.GetPlayer.Money -= AbilityCost;
         Player.GetPlayer.NeededWater -= (int)Change;
     }
@@ -82,6 +84,7 @@ public class Ability : MonoBehaviour
             return;
         }
 
+        Bought = true;
         Player.GetPlayer.Money -= AbilityCost;
         Player.GetPlayer.MoneyPerSec += (int)Change;
     }
@@ -94,6 +97,7 @@ public class Ability : MonoBehaviour
             return;
         }
 
+        Bought = true;
         Player.GetPlayer.Money -= AbilityCost;
         Player.GetPlayer.NeededNutrients -= (int)Change;
     }
@@ -106,6 +110,7 @@ public class Ability : MonoBehaviour
             return;
         }
 
+        Bought = true;
         Player.GetPlayer.Money -= AbilityCost;
         Player.GetPlayer.NeededSun -= (int)Change;
     }
@@ -122,6 +127,7 @@ public class Ability : MonoBehaviour
         {
             Player.GetPlayer.Upgrades |= Player.eUpgrades.LongStalk;
         }
+        Bought = true;
         Player.GetPlayer.Money -= AbilityCost;
         Player.GetPlayer.SeedingTime += Change;
     }
@@ -134,6 +140,7 @@ public class Ability : MonoBehaviour
             return;
         }
 
+        Bought = true;
         Player.GetPlayer.Money -= AbilityCost;
         Player.GetPlayer.FloweringTime += Change;
     }
@@ -145,6 +152,7 @@ public class Ability : MonoBehaviour
             return;
         }
 
+        Bought = true;
         Player.GetPlayer.Money -= AbilityCost;
         Player.GetPlayer.WaterPercent += Change;
         Player.GetPlayer.WaterPercent = Mathf.Clamp01(Player.GetPlayer.WaterPercent);
@@ -158,6 +166,7 @@ public class Ability : MonoBehaviour
             return;
         }
 
+        Bought = true;
         Player.GetPlayer.Money -= AbilityCost;
         Player.GetPlayer.NutrientsPercent += Change;
         Player.GetPlayer.NutrientsPercent = Mathf.Clamp01(Player.GetPlayer.NutrientsPercent);
@@ -171,6 +180,7 @@ public class Ability : MonoBehaviour
             return;
         }
 
+        Bought = true;
         Player.GetPlayer.Money -= AbilityCost;
         Player.GetPlayer.SunPercent += Change;
         Player.GetPlayer.SunPercent = Mathf.Clamp01(Player.GetPlayer.SunPercent);

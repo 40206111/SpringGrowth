@@ -1686,7 +1686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3440323218035080522, guid: afe68040304eb8848b727db25f9c69b6, type: 3}
       propertyPath: Dependants.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3440323218035080522, guid: afe68040304eb8848b727db25f9c69b6, type: 3}
       propertyPath: Dependants.Array.data[0]
@@ -3232,7 +3232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3440323218035080522, guid: afe68040304eb8848b727db25f9c69b6, type: 3}
       propertyPath: Dependants.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3440323218035080522, guid: afe68040304eb8848b727db25f9c69b6, type: 3}
       propertyPath: Dependants.Array.data[0]
