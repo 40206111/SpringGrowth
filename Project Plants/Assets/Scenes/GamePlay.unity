@@ -486,6 +486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 40
+  AndroidSpeed: 0.5
 --- !u!4 &563372139
 Transform:
   m_ObjectHideFlags: 0

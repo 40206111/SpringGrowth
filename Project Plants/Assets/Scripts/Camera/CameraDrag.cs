@@ -28,7 +28,9 @@ public class CameraDrag : MonoBehaviour
 
         if (Input.touchCount <= 0)
         {
-            transform.position = Camera.main.transform.position;
+            Vector3 pos = Camera.main.transform.position;
+            pos.z = 0;
+            transform.position = pos;
         }
 #else
         if (Input.GetMouseButton(0))
