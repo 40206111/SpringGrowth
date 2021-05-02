@@ -27,7 +27,7 @@ public class TileIcons : MonoBehaviour
 
     void Start()
     {
-        Vector3 pos = transform.position + new Vector3(0.5f, 0.5f, 0.0f);
+        Vector3 pos = transform.position + GameBoardManager.GetInstance.BoardOffset;
         pos.x = Mathf.FloorToInt(pos.x);
         pos.y = Mathf.FloorToInt(pos.y);
 
@@ -40,6 +40,8 @@ public class TileIcons : MonoBehaviour
         }
         WaterText.text = tile.CurrentMoisture.ToString();
         NutrientsText.text = tile.CurrentNutrients.ToString();
-        SunText.text = tile.CurrentSun.ToString(); ;
+        SunText.text = tile.CurrentSun.ToString();
+
+        gameObject.SetActive(false);
     }
 }

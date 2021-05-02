@@ -31,6 +31,7 @@ public class GameBoardManager : MonoBehaviour
     public GameBoard Board;
     readonly int RandomPadding = 10;
     public bool BoardFullyLoaded { get; private set; }
+    public Vector3 BoardOffset { get { return -transform.position; } }
 
     private void Awake()
     {
