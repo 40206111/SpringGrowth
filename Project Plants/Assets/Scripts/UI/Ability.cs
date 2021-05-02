@@ -118,7 +118,62 @@ public class Ability : MonoBehaviour
             return;
         }
 
+        if (!Player.GetPlayer.Upgrades.HasFlag(Player.eUpgrades.LongStalk))
+        {
+            Player.GetPlayer.Upgrades |= Player.eUpgrades.LongStalk;
+        }
         Player.GetPlayer.Money -= AbilityCost;
         Player.GetPlayer.SeedingTime += Change;
     }
+
+
+    public void IncreaseFloweringDuration()
+    {
+        if (Player.GetPlayer.Money < AbilityCost)
+        {
+            return;
+        }
+
+        Player.GetPlayer.Money -= AbilityCost;
+        Player.GetPlayer.FloweringTime += Change;
+    }
+
+    public void IncreaseWaterPercent()
+    {
+        if (Player.GetPlayer.Money < AbilityCost)
+        {
+            return;
+        }
+
+        Player.GetPlayer.Money -= AbilityCost;
+        Player.GetPlayer.WaterPercent += Change;
+        Player.GetPlayer.WaterPercent = Mathf.Clamp01(Player.GetPlayer.WaterPercent);
+    }
+
+
+    public void IncreaseNutrientPercent()
+    {
+        if (Player.GetPlayer.Money < AbilityCost)
+        {
+            return;
+        }
+
+        Player.GetPlayer.Money -= AbilityCost;
+        Player.GetPlayer.NutrientsPercent += Change;
+        Player.GetPlayer.NutrientsPercent = Mathf.Clamp01(Player.GetPlayer.NutrientsPercent);
+    }
+
+
+    public void IncreaseSunPercent()
+    {
+        if (Player.GetPlayer.Money < AbilityCost)
+        {
+            return;
+        }
+
+        Player.GetPlayer.Money -= AbilityCost;
+        Player.GetPlayer.SunPercent += Change;
+        Player.GetPlayer.SunPercent = Mathf.Clamp01(Player.GetPlayer.SunPercent);
+    }
+
 }
