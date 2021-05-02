@@ -36,7 +36,7 @@ public class GameManagement : MonoBehaviour
 #if UNITY_ANDROID && !UNITY_EDITOR
         if (Input.GetMouseButtonUp(0) && SelectorInfo.Plantable)
         {
-            for(touch in Input.touches) 
+            foreach (var touch in Input.touches) 
             {
                 if (touch.tapCount == 2) 
                 {
