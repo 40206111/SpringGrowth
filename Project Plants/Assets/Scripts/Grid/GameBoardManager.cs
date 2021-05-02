@@ -39,6 +39,7 @@ public class GameBoardManager : MonoBehaviour
 
     void GenerateGameBoard(uint gridWidth, uint gridHeight)
     {
+        PoolManager.GetInstance.CreateGameBoardPools(gridWidth, gridHeight);
         //Do in coroutine to avoid game hanging
         StartCoroutine(CoGenerateGameBoard(gridWidth, gridHeight));
     }
@@ -107,6 +108,16 @@ public class GameBoardManager : MonoBehaviour
                 TheTileMap.SetTile(new Vector3Int(x, y, 0), TileSprites.TileAesthetic[(int)landType]);
                 Tile newTile = new Tile(landType);
                 Board.AddTile(newTile);
+
+                if (x == 0 && y == 0)
+                {
+                    Player.GetPlayer.NeededWater = newTile.CurrentMoisture;
+                    Player.GetPlayer.NeededNutrients = newTile.CurrentNutrients;
+                    Player.GetPlayer.NeededSun = newTile.CurrentSun;
+                    GameObject weed = PoolManager.GetInstance.GetWeed();
+                    weed.SetActive(true);
+                    weed.transform.position = new Vector3(x, y, 0);
+                }
             }
             yield return null;
         }
