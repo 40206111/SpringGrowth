@@ -35,6 +35,7 @@ public class Player
     public int MoneyPerSec = 1;
     public float FloweringTime = 5;
     public float TimePlanted = 5;
+    public float SeedLife = 10;
 
     public void Init(int neededWater, int neededNutrients, int neededSun, int seedingTime)
     {

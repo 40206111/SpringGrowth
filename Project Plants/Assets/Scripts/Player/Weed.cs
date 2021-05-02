@@ -26,6 +26,8 @@ public class Weed : MonoBehaviour
     int moneyPerSec = 1;
     float waitedTime = 0;
 
+    float SeedLife = 0;
+
     public Player.eUpgrades Upgrades;
 
     public eState State = eState.Planted;
@@ -41,6 +43,7 @@ public class Weed : MonoBehaviour
         moneyPerSec = Player.GetPlayer.MoneyPerSec;
         Upgrades = Player.GetPlayer.Upgrades;
         TimePlanted = Player.GetPlayer.TimePlanted;
+        SeedLife = Player.GetPlayer.SeedLife;
         State = eState.Planted;
     }
 
@@ -80,7 +83,7 @@ public class Weed : MonoBehaviour
             CalculateSeedProduce();
             if (waitedTime >= seedProduceTime)
             {
-                Player.GetPlayer.Seeds += 1;
+                StartCoroutine(SeedExistance());
                 waitedTime = 0;
             }
             else
@@ -136,5 +139,12 @@ public class Weed : MonoBehaviour
         int sunDelta = NeededSun - tile.CurrentSun;
 
         seedProduceTime = 1 + ((Mathf.Abs(waterDelta) + Mathf.Abs(nutrientDelta) + Mathf.Abs(sunDelta)) / 2);
+    }
+
+    IEnumerator<YieldInstruction> SeedExistance()
+    {
+        Player.GetPlayer.Seeds++;
+        yield return new WaitForSeconds(SeedLife);
+        Player.GetPlayer.Seeds--;
     }
 }
