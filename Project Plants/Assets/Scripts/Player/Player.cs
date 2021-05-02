@@ -18,14 +18,23 @@ public class Player
         private set { }
     }
 
+    public enum eUpgrades
+    {
+        None = 0,
+        LongStalk = 1 << 0,
+    }
+
+    public eUpgrades Upgrades = eUpgrades.None;
+
     public int Seeds = 1;
     public int NeededWater = 30;
     public int NeededNutrients = 30;
     public int NeededSun = 30;
-    public float SeedingTime = 15;
+    public float SeedingTime = 5;
     public int Money = 0;
     public int MoneyPerSec = 1;
-    public float FloweringTime = 15;
+    public float FloweringTime = 5;
+    public float TimePlanted = 5;
 
     public void Init(int neededWater, int neededNutrients, int neededSun, int seedingTime)
     {

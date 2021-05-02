@@ -44,3 +44,6 @@ TagManager:
   - name: plants
     uniqueID: 3850912435
     locked: 0
+  - name: ui
+    uniqueID: 3908864563
+    locked: 0

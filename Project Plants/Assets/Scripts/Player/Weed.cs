@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Weed : MonoBehaviour
 {
-    enum eState
+    public enum eState
     {
+        None,
         Planted,
         Budding,
         Flowering,
@@ -25,7 +26,10 @@ public class Weed : MonoBehaviour
     int moneyPerSec = 1;
     float waitedTime = 0;
 
-    eState State = eState.Planted;
+    public Player.eUpgrades Upgrades;
+
+    public eState State = eState.Planted;
+    float TimePlanted = 0;
 
     public void Initialise()
     {
@@ -35,6 +39,8 @@ public class Weed : MonoBehaviour
         SeedingTime = Player.GetPlayer.SeedingTime;
         FloweringTime = Player.GetPlayer.FloweringTime;
         moneyPerSec = Player.GetPlayer.MoneyPerSec;
+        Upgrades = Player.GetPlayer.Upgrades;
+        TimePlanted = Player.GetPlayer.TimePlanted;
         State = eState.Planted;
     }
 
@@ -48,6 +54,22 @@ public class Weed : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (State != eState.Planted)
+        {
+            if (GameManagement.GetInstance.GameStage == GameManagement.eStage.Flowering)
+            {
+                ChangeState(eState.Flowering);
+            }
+            else if (State != eState.NoSeeds && GameManagement.GetInstance.GameStage == GameManagement.eStage.Seeding)
+            {
+                ChangeState(eState.Seeds);
+            }
+            if (GameManagement.GetInstance.GameStage == GameManagement.eStage.Normal)
+            {
+                ChangeState(eState.Budding);
+            }
+        }
+
         if (State == eState.Seeds)
         {
             if (TimeInState >= SeedingTime)
@@ -71,6 +93,7 @@ public class Weed : MonoBehaviour
         {
             if (TimeInState >= FloweringTime)
             {
+                TimeInState += Time.deltaTime;
                 return;
             }
 
@@ -83,6 +106,10 @@ public class Weed : MonoBehaviour
             {
                 waitedTime += Time.deltaTime;
             }
+        }
+        if (State == eState.Planted && TimeInState >= TimePlanted)
+        {
+            ChangeState(eState.Budding);
         }
 
         TimeInState += Time.deltaTime;
@@ -108,6 +135,6 @@ public class Weed : MonoBehaviour
         int nutrientDelta = NeededNutrients - tile.CurrentNutrients;
         int sunDelta = NeededSun - tile.CurrentSun;
 
-        seedProduceTime = (Mathf.Abs(waterDelta) + Mathf.Abs(nutrientDelta) + Mathf.Abs(sunDelta)) / 2;
+        seedProduceTime = 1 + ((Mathf.Abs(waterDelta) + Mathf.Abs(nutrientDelta) + Mathf.Abs(sunDelta)) / 2);
     }
 }
