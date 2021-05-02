@@ -406,6 +406,7 @@ GameObject:
   - component: {fileID: 1095076008}
   - component: {fileID: 1095076007}
   - component: {fileID: 1095076009}
+  - component: {fileID: 1095076010}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -457,6 +458,19 @@ MonoBehaviour:
   LawnDefaults: {fileID: 11400000, guid: f01061d957955db478e4f9fc1ac905d3, type: 2}
   FarmDefaults: {fileID: 11400000, guid: 10b04086e12f33a46abf972329405553, type: 2}
   PavingDefaults: {fileID: 11400000, guid: 6a33cd0f92373d140b0a79734dcbcf16, type: 2}
+--- !u!114 &1095076010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095076006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5f341ee6add8e44984f2209e962a170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameStage: 0
 --- !u!1 &1467928898
 GameObject:
   m_ObjectHideFlags: 0
