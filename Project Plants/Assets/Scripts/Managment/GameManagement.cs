@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameManagement : MonoBehaviour
 {
+    [SerializeField]
+    Transform Selector;
+
     //Manager
     static GameManagement Instance;
     public static GameManagement GetInstance
@@ -18,6 +21,20 @@ public class GameManagement : MonoBehaviour
     public void Awake()
     {
         Instance = this;
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (Player.GetPlayer.Seeds > 0)
+            {
+                Player.GetPlayer.Seeds--;
+                GameObject weed = PoolManager.GetInstance.GetWeed();
+                weed.SetActive(true);
+                weed.transform.position = Selector.position;
+            }
+        }
     }
 
     public enum eStage
