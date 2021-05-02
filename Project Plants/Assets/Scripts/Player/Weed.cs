@@ -145,6 +145,9 @@ public class Weed : MonoBehaviour
     {
         Player.GetPlayer.Seeds++;
         yield return new WaitForSeconds(SeedLife);
-        Player.GetPlayer.Seeds--;
+        if (Player.GetPlayer.Seeds != 0)
+        {
+            Player.GetPlayer.Seeds--;
+        }
     }
 }

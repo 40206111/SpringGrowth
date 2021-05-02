@@ -10,6 +10,10 @@ public class CameraDrag : MonoBehaviour
 
     void Update()
     {
+        if (GameManagement.GetInstance.UpgradeOpen)
+        {
+            return;
+        }
         if (Input.GetMouseButton(0))
         {
             Vector3 pos = transform.position;

@@ -13,4 +13,10 @@ public class ButtonRelay : MonoBehaviour
     {
         GameManagement.GetInstance?.NextStage();
     }
+
+    public void OpenUpgrades()
+    {
+        Debug.Log("Show Tree");
+        CloseTree.Instance?.ShowTree();
+    }
 }

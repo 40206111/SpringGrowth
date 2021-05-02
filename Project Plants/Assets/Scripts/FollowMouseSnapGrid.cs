@@ -37,7 +37,7 @@ public class FollowMouseSnapGrid : MonoBehaviour
         float nutrientsPercent = (float)nutrientsDelta / (float)Player.GetPlayer.NeededNutrients;
         float sunPercent = (float)sunDelta / (float)Player.GetPlayer.NeededSun;
 
-        Plantable = waterPercent >= Player.GetPlayer.WaterPercent && nutrientsPercent >= Player.GetPlayer.NutrientsPercent && sunPercent >= Player.GetPlayer.SunPercent;
+        Plantable = waterPercent <= Player.GetPlayer.WaterPercent && nutrientsPercent <= Player.GetPlayer.NutrientsPercent && sunPercent <= Player.GetPlayer.SunPercent;
         
         SR.color = Plantable ? Color.green : Color.red;
 

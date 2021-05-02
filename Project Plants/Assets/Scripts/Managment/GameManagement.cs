@@ -10,6 +10,8 @@ public class GameManagement : MonoBehaviour
 
     FollowMouseSnapGrid SelectorInfo;
 
+    public bool UpgradeOpen = false;
+
     //Manager
     static GameManagement Instance;
     public static GameManagement GetInstance
@@ -25,6 +27,7 @@ public class GameManagement : MonoBehaviour
     {
         Instance = this;
         SceneManager.LoadSceneAsync("UI", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("Tree", LoadSceneMode.Additive);
         SelectorInfo = Selector.GetComponent<FollowMouseSnapGrid>();
     }
 
